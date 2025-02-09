@@ -22,13 +22,13 @@ extension DateInterval {
         Calendar.current.dateInterval(of: .day, for: Date()) ?? .init()
     }
 
-    public static var lastFiveYears: DateInterval {
+    public static var lastFiveYears: DateInterval = {
         guard
             let yearAgo = Calendar.current.date(byAdding: .year, value: -5, to: Date()),
             let firstMonthInterval = Calendar.current.dateInterval(of: .month, for: yearAgo)
         else { return .init() }
         return DateInterval(start: firstMonthInterval.start, end: currentMonth.end)
-    }
+    }()
 
     public static var lastTwoMonths: DateInterval {
         guard

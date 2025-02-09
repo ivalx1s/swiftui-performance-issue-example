@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct ExamplesApp: App {
+    
+    @StateObject private var store = Store2()
+    
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ContentView()
+            NavigationStack(path: $store.path) {
+                ContentView(store: store)
             }
         }
     }
